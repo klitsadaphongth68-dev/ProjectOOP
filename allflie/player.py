@@ -24,11 +24,15 @@ class Player(pygame.sprite.Sprite):
     def load_image(self, filename, fallback_size, fallback_color):
         path = os.path.join(ASSET_DIR, filename)
         try:
+            if not os.path.exists(path):
+                raise FileNotFoundError(f"Asset not found: {path}")
             image = pygame.image.load(path).convert_alpha()
             return pygame.transform.scale(image, fallback_size)
-        except Exception:
+        except Exception as e:
             surface = pygame.Surface(fallback_size, pygame.SRCALPHA)
             surface.fill(fallback_color)
+            # Fallback plain color image (no text overlay)
+            print(f"Warning: {e}")
             return surface
 
     def update(self):
