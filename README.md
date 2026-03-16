@@ -1,9 +1,9 @@
-# ProjectOOP Pygame Shooter
+# ProjectOOP Pygame Cowboy vs Slime
 
 เกมยิงปืนแนว 2D สร้างด้วย Python และ Pygame
 
 ## สมาชิกทีม
-- กฤษฎาพงษ์ ทิณพัฒน์ (รหัสนักศึกษา 68114540054)
+- นายกฤษฎาพงษ์ ทิณพัฒน์ (รหัสนักศึกษา 68114540054)
 - นายอติวิชญ์ สีหนันท์ (รหัสนักศึกษา 68114540689)
 
 ## คำอธิบาย
@@ -11,8 +11,8 @@
 - ผู้เล่นอยู่ฝั่งซ้ายของหน้าจอ (โซนจำกัด)
 - ยิงพลัง (ปุ่ม SPACE)
 - ศัตรู spawn ทางขวาเข้ามา
-- score: enemy1=10, enemy2=20, enemy3=-5
-- ศัตรูจะเพิ่มความเร็วแบบช้า ๆ (ไม่เร็วเกินไป) เมื่อเวลาผ่านไป
+- score: ตัวสีเขียว=10, ตัวสีฟ้า=20, ตัวสีส้ม=-5
+- ศัตรูจะเพิ่มความเร็วแบบช้าๆเมื่อเวลาผ่านไป
 - ถ้าศัตรูเข้าถึงเส้นเขตผู้เล่นแล้วเกมแพ้ และแสดง GAME OVER + สรุปคะแนน
 - ปุ่ม R สำหรับ reset เกม
 
@@ -23,19 +23,23 @@
 - allflie/enemy.py
 - allflie/bullet.py
 
-## วิธีใช้งาน
-1. ติดตั้ง Python 3.13 และ Pygame
-2. เปิด terminal แล้วเข้า folder
-   `cd "C:\Users\Asus Tuf Gaming\OneDrive\Desktop\ProjectOOP"`
-3. สั่งรัน
-   `./.venv/Scripts/python.exe main.py`
-
-## คำสั่งติดตั้ง
-```
-py -3.13 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install --upgrade pip setuptools wheel
-.\.venv\Scripts\python.exe -m pip install pygame
-```
+## การตั้งค่าและการติดตั้ง
+1. **ติดตั้ง Python** (แนะนำเวอร์ชัน 3.12 ขึ้นไป)
+2. **ติดตั้งเครื่องมือ `uv`** (Package Manager ตัวใหม่ที่ทำงานได้เร็วมาก)
+   - เปิด Terminal / Command Prompt แล้วพิมพ์คำสั่ง:
+     ```bash
+     pip install uv
+     ```
+3. **เปิดโฟลเดอร์โปรเจกต์**
+   - ใน Terminal ให้ใช้คำสั่ง cd เพื่อเข้ามายังโฟลเดอร์เกม:
+     ```bash
+     cd "C:\Users\Asus Tuf Gaming\OneDrive\Desktop\ProjectOOP"
+     ```
+4. **รันเกม**
+   - ใช้คำสั่ง `uv run` ซึ่งจะทำการดาวน์โหลด ติดตั้ง dependencies (เช่น pygame, pillow) และจัดการ Environment ให้อัตโนมัติ พร้อมกับเปิดเกมขึ้นมาเลย:
+     ```bash
+     uv run main.py
+     ```
 
 ## ปุ่มควบคุม
 - ลูกศร/WASD: เคลื่อนที่
@@ -43,6 +47,6 @@ py -3.13 -m venv .venv
 - R: รีเซ็ต
 
 ## ชนิดศัตรู
-- Enemy 1: +10 คะแนน
-- Enemy 2: +20 คะแนน
-- enemy3: -5 คะแนน (สามารถปล่อยผ่านได้, ถ้ายิงโดนจะถูกหักคะแนน)
+- ตัวสีเขียว: +10 คะแนน
+- ตัวสีฟ้า: +20 คะแนน
+- ตัวสีส้ม: -5 คะแนน (สามารถปล่อยผ่านได้, ถ้ายิงโดนจะถูกหักคะแนน)

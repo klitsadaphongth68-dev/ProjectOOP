@@ -10,14 +10,14 @@ BOUNDARY_LINE_X = PLAYER_ZONE_WIDTH
 
 # asset paths
 ASSET_DIR = "assets"
-PLAYER_STAND_IMAGE = "naruto1.png"
-PLAYER_RUN_IMAGE = "naruto2.png"
-PLAYER_SHOOT_IMAGE = "naruto3.png"
-POWER_IMAGE = "power.png"
+PLAYER_STAND_IMAGE = "cowboy2.png.png"
+PLAYER_RUN_IMAGES = ["cowboy3.png.png", "cowboy4.png.png"]
+PLAYER_SHOOT_IMAGE = "cowboy1.png.png"
+POWER_IMAGE = "bullet.png.png"
 ENEMY_IMAGES = {
     'easy': "enemy1.png",   # 10 คะแนน
     'mid': "enemy2.png",    # 20 คะแนน
     'bad': "enemy3.png"     # ยิงโดนเสีย 5 คะแนน
 }
-BACKGROUND_IMAGE = "background.png"
+BACKGROUND_IMAGE = "background2.png"
 

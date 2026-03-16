@@ -4,7 +4,7 @@ from allflie.settings import (
     PLAYER_SPEED,
     ASSET_DIR,
     PLAYER_STAND_IMAGE,
-    PLAYER_RUN_IMAGE,
+    PLAYER_RUN_IMAGES,
     PLAYER_SHOOT_IMAGE,
     BOUNDARY_LINE_X,
 )
@@ -13,12 +13,15 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
         self.images = {
-            'stand': self.load_image(PLAYER_STAND_IMAGE, (40, 40), (50, 150, 240)),
-            'run': self.load_image(PLAYER_RUN_IMAGE, (40, 40), (70, 180, 255)),
-            'shoot': self.load_image(PLAYER_SHOOT_IMAGE, (40, 40), (255, 255, 0)),
+            'stand': self.load_image(PLAYER_STAND_IMAGE, (120, 120), (50, 150, 240)),
+            'run': [self.load_image(img, (120, 120), (70, 180, 255)) for img in PLAYER_RUN_IMAGES],
+            'shoot': self.load_image(PLAYER_SHOOT_IMAGE, (120, 120), (255, 255, 0)),
         }
         self.state = 'stand'
-        self.image = self.images[self.state]
+        self.run_frame = 0
+        self.last_run_update = pygame.time.get_ticks()
+        self.run_animation_speed = 150
+        self.image = self.images['stand']
         self.rect = self.image.get_rect(center=(x, y))
 
     def load_image(self, filename, fallback_size, fallback_color):
@@ -67,5 +70,12 @@ class Player(pygame.sprite.Sprite):
         if self.rect.bottom > pygame.display.get_surface().get_height():
             self.rect.bottom = pygame.display.get_surface().get_height()
 
-        self.image = self.images[self.state]
+        if self.state == 'run':
+            now = pygame.time.get_ticks()
+            if now - self.last_run_update > self.run_animation_speed:
+                self.last_run_update = now
+                self.run_frame = (self.run_frame + 1) % len(self.images['run'])
+            self.image = self.images['run'][self.run_frame]
+        else:
+            self.image = self.images[self.state]
 

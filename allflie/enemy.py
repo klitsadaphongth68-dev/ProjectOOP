@@ -5,9 +5,9 @@ from allflie.settings import ASSET_DIR, ENEMY_IMAGES
 
 class Enemy(pygame.sprite.Sprite):
     TYPE_DATA = {
-        'easy': {'score': 10, 'color': (150, 220, 120), 'size': (32, 32)},
-        'mid': {'score': 20, 'color': (220, 140, 40), 'size': (36, 36)},
-        'bad': {'score': -5, 'color': (220, 50, 50), 'size': (28, 28)},
+        'easy': {'score': 10, 'color': (150, 220, 120), 'size': (96, 96)},
+        'mid': {'score': 20, 'color': (220, 140, 40), 'size': (108, 108)},
+        'bad': {'score': -5, 'color': (220, 50, 50), 'size': (84, 84)},
     }
 
     def __init__(self, x, y, enemy_type='easy', speed=2.5):
